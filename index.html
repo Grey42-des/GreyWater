@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d14">
+<meta name="description" content="A private, offline-first habit tracker with streaks, quests and XP.">
+<link rel="manifest" href="manifest.json">
+<title>GreyWater — Habit Tracker</title>
+<style>
+:root{--bg:#0b0d14;--panel:#131722;--panel2:#191f2d;--line:#293143;--text:#f2f5fb;--muted:#98a3b8;--purple:#a78bfa;--green:#45e0a3;--orange:#ffad66;--blue:#75baff;--red:#ff7185}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#202044 0,transparent 50%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0;color:inherit}.wrap{max-width:880px;margin:auto;padding:18px 14px 90px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 22px}.brand{display:flex;gap:10px;align-items:center}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#a78bfa,#5c55dc);display:grid;place-items:center;font-size:22px;box-shadow:0 8px 30px #7c3aed30}.eyebrow{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1.8px}.brand h1{font-size:19px;line-height:1.1;margin:2px 0}.pill{background:var(--panel2);border:1px solid var(--line);padding:8px 11px;border-radius:999px;color:var(--muted);font-size:12px}.hero{border:1px solid #37365d;background:linear-gradient(130deg,#211f42,#171b2b 70%);border-radius:24px;padding:20px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:#8b5cf620;right:-50px;top:-75px}.hero-row{display:flex;justify-content:space-between;gap:16px;align-items:center;position:relative;z-index:1}.hero h2{margin:4px 0;font-size:25px;letter-spacing:-.7px}.hero p{color:#b6bad0;margin:6px 0 0;font-size:13px}.level{min-width:78px;height:78px;border:1px solid #6960a7;border-radius:50%;display:grid;place-items:center;text-align:center;background:#181831}.level strong{font-size:23px;display:block;line-height:1.1}.level span{font-size:10px;color:#c7bfff;text-transform:uppercase;letter-spacing:1px}.xpbar{height:7px;background:#34334f;border-radius:99px;margin-top:18px;overflow:hidden}.xpbar div{height:100%;width:0;background:linear-gradient(90deg,#a78bfa,#45e0a3);border-radius:99px;transition:width .25s}.xp-caption{display:flex;justify-content:space-between;color:#b6bad0;font-size:11px;margin-top:7px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 22px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px}.stat .icon{font-size:18px}.stat strong{display:block;font-size:23px;margin:5px 0 0}.stat small{color:var(--muted);font-size:11px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 0 12px}.section-head h3{font-size:16px;margin:0}.sub{color:var(--muted);font-size:12px}.btn{border-radius:12px;padding:10px 13px;background:var(--panel2);border:1px solid var(--line);font-weight:650;font-size:12px}.btn.primary{background:var(--purple);border-color:var(--purple);color:#151020}.btn:active{transform:scale(.98)}.habit-list{display:grid;gap:9px}.habit{display:flex;align-items:center;gap:12px;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:17px}.habit.done{border-color:#286c58;background:linear-gradient(110deg,#12251f,var(--panel))}.habit-emoji{width:43px;height:43px;display:grid;place-items:center;border-radius:14px;background:var(--panel2);font-size:21px;flex-shrink:0}.habit-main{flex:1;min-width:0}.habit-name{font-weight:700;overflow-wrap:anywhere}.habit-meta{font-size:11px;color:var(--muted);margin-top:3px}.check{width:31px;height:31px;border-radius:10px;border:1px solid #48536a;background:#10131c;display:grid;place-items:center;font-size:17px;flex-shrink:0}.done .check{background:var(--green);border-color:var(--green);color:#082016}.mini-delete{background:transparent;color:#6e7890;font-size:17px;padding:4px}.empty{padding:24px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:16px}.quest{padding:15px;background:linear-gradient(120deg,#202039,#151a26);border:1px solid #383454;border-radius:17px}.quest-row{display:flex;align-items:center;gap:12px}.quest-icon{font-size:25px}.quest-info{flex:1}.quest-info strong{display:block}.quest-info small{color:var(--muted)}.reward{font-size:12px;color:#d7caff;background:#3a2e5a;padding:6px 9px;border-radius:9px}.heat-wrap,.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px}.heatmap{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:5px;margin-top:12px}.heat{aspect-ratio:1;border-radius:4px;background:#252c3a;min-width:0}.heat[data-n="1"]{background:#245a4d}.heat[data-n="2"]{background:#23896a}.heat[data-n="3"]{background:#38bd8c}.heat[data-n="4"]{background:#8bf0c6}.heat-legend{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:10px;justify-content:flex-end;margin-top:8px}.heat-legend i{width:10px;height:10px;border-radius:3px;background:#252c3a}.heat-legend i:nth-of-type(2){background:#245a4d}.heat-legend i:nth-of-type(3){background:#23896a}.heat-legend i:nth-of-type(4){background:#38bd8c}.heat-legend i:nth-of-type(5){background:#8bf0c6}.chart{display:flex;align-items:end;gap:8px;height:125px;padding:12px 2px 0}.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:end}.bar{width:100%;max-width:34px;min-height:3px;background:linear-gradient(180deg,#a78bfa,#6355ce);border-radius:6px 6px 2px 2px}.bar-label{font-size:10px;color:var(--muted)}.bar-value{font-size:10px;color:#d6d0ff}.leader-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}.leader-row:last-child{border-bottom:0}.rank{width:26px;color:var(--muted);font-weight:800}.avatar{width:34px;height:34px;border-radius:12px;background:var(--panel2);display:grid;place-items:center}.leader-name{flex:1;font-weight:650}.leader-score{color:var(--purple);font-size:12px;font-weight:750}.tabs{display:flex;gap:7px;overflow:auto;padding:4px 0 8px}.tab{padding:8px 12px;border-radius:999px;background:transparent;border:1px solid var(--line);color:var(--muted);white-space:nowrap;font-size:12px}.tab.active{background:#292541;border-color:#6456a5;color:#e1d9ff}.form-row{display:flex;gap:8px}.field{width:100%;background:#0d111a;border:1px solid var(--line);border-radius:11px;padding:11px;color:var(--text);outline:none}.field:focus{border-color:var(--purple)}.form-grid{display:grid;grid-template-columns:1fr 100px;gap:8px;margin-top:10px}.form-grid .full{grid-column:1/-1}.hidden{display:none!important}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#e6dcff;color:#171225;padding:11px 16px;border-radius:12px;font-size:13px;font-weight:750;box-shadow:0 8px 35px #0008;z-index:10;max-width:90vw;text-align:center}.footer{text-align:center;color:#626d82;font-size:11px;margin-top:24px}.small-btn{background:transparent;color:var(--muted);padding:5px;font-size:12px}.notice{font-size:12px;color:var(--muted);line-height:1.5}.modal-backdrop{position:fixed;inset:0;background:#05060bd9;display:grid;place-items:center;padding:18px;z-index:20}.modal{width:min(100%,430px);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;max-height:90vh;overflow:auto}.modal h3{margin:0 0 8px}.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+@media(min-width:650px){.wrap{padding:24px 22px 70px}.main-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.left-col,.right-col{min-width:0}.heatmap{grid-template-columns:repeat(13,minmax(0,1fr))}.hero{padding:24px}.hero h2{font-size:30px}}
+@media(max-width:370px){.stats{gap:6px}.stat{padding:10px}.stat strong{font-size:20px}.hero h2{font-size:22px}.heatmap{gap:3px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="logo">✦</div><div><div class="eyebrow">YOUR PERSONAL QUEST LOG</div><h1>GreyWater</h1></div></div>
+    <button class="pill" id="settingsBtn">⚙ Settings</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-row"><div><div class="eyebrow">TODAY'S RUN</div><h2 id="greeting">Show up. Level up.</h2><p id="dateLine">One small win at a time.</p></div><div class="level"><div><strong id="level">1</strong><span>Level</span></div></div></div>
+    <div class="xpbar"><div id="xpFill"></div></div><div class="xp-caption"><span id="xpLabel">0 XP earned</span><span id="nextLevel">100 XP to next level</span></div>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span class="icon">🔥</span><strong id="bestStreak">0</strong><small>Active streaks</small></div>
+    <div class="stat"><span class="icon">✓</span><strong id="todayCount">0/0</strong><small>Today's progress</small></div>
+    <div class="stat"><span class="icon">⚡</span><strong id="totalXP">0</strong><small>Total XP</small></div>
+  </section>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="today">☀ Today</button>
+    <button class="tab" data-tab="progress">▦ Progress</button>
+    <button class="tab" data-tab="quests">✦ Quests & rewards</button>
+    <button class="tab" data-tab="friends">♟ Leaderboard</button>
+  </div>
+
+  <section id="view-today">
+    <div class="section-head"><div><h3>Your habits</h3><div class="sub" id="habitSub">Small actions compound.</div></div><button class="btn primary" id="addHabitBtn">＋ Add habit</button></div>
+    <div id="habitList" class="habit-list"></div>
+    <div class="section-head"><div><h3>Daily quest</h3><div class="sub">A bonus objective for today</div></div></div>
+    <div id="dailyQuest" class="quest"></div>
+  </section>
+
+  <section id="view-progress" class="hidden">
+    <div class="section-head"><div><h3>Activity heatmap</h3><div class="sub">Your last 91 days</div></div><span class="pill" id="heatPercent">0% avg</span></div>
+    <div class="heat-wrap"><div class="sub">Each square is one day. Brighter = more habits completed.</div><div id="heatmap" class="heatmap"></div><div class="heat-legend"><span>Less</span><i></i><i></i><i></i><i></i><i></i><span>More</span></div></div>
+    <div class="section-head"><div><h3>Last 7 days</h3><div class="sub">Completion rate by day</div></div></div>
+    <div class="panel"><div id="weeklyChart" class="chart"></div><div class="notice" id="weeklySummary"></div></div>
+    <div class="section-head"><div><h3>Your stats</h3></div></div>
+    <div class="stats">
+      <div class="stat"><span class="icon">🏆</span><strong id="completedAll">0</strong><small>Completions</small></div>
+      <div class="stat"><span class="icon">📈</span><strong id="rateAll">0%</strong><small>Overall rate</small></div>
+      <div class="stat"><span class="icon">🌱</span><strong id="habitTotal">0</strong><small>Active habits</small></div>
+    </div>
+  </section>
+
+  <section id="view-quests" class="hidden">
+    <div class="section-head"><div><h3>Daily quests</h3><div class="sub">Refresh every new day</div></div></div>
+    <div id="questList" class="habit-list"></div>
+    <div class="section-head"><div><h3>Milestone rewards</h3><div class="sub">Achievements you can unlock</div></div></div>
+    <div id="rewardsList" class="habit-list"></div>
+  </section>
+
+  <section id="view-friends" class="hidden">
+    <div class="section-head"><div><h3>Local leaderboard</h3><div class="sub">A score board on this device only</div></div><button class="btn" id="addFriendBtn">＋ Add name</button></div>
+    <div class="panel"><div id="leaderboard"></div></div>
+    <p class="notice">This leaderboard is private and stored on this phone. It doesn't connect to friends' devices. Add names and scores manually, or use it as a personal high-score board.</p>
+  </section>
+
+  <div class="footer">Made for your own progress, not perfection. Data stays in this browser on this device.</div>
+</div>
+
+<div id="modalRoot"></div><div id="toast" class="toast hidden" role="status"></div>
+<script>
+const KEY='greywater-v1';
+const today=()=>localDate(new Date());
+function localDate(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function shiftDate(date,days){const d=new Date(date+'T12:00:00');d.setDate(d.getDate()+days);return localDate(d)}
+function daysBetween(a,b){return Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000)}
+function fresh(){return {habits:[{id:'h1',name:'Study / learn',emoji:'📚',xp:15,created:today()},{id:'h2',name:'Move your body',emoji:'🏃',xp:10,created:today()},{id:'h3',name:'Plan tomorrow',emoji:'🗒️',xp:10,created:today()}],logs:{},friends:[],profile:'You',reminderTime:'',remindersOn:false,questDate:today()}}
+let state;try{state=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){state=fresh()}
+if(!state.logs)state.logs={};if(!state.friends)state.friends=[];if(!state.habits)state.habits=[];
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function logFor(day=today()){if(!state.logs[day])state.logs[day]={};return state.logs[day]}
+function completed(h,day=today()){return !!(state.logs[day]&&state.logs[day][h.id])}
+function totalXP(){let sum=0;for(const [day,logs] of Object.entries(state.logs)){const count=state.habits.filter(h=>logs[h.id]).length;for(const h of state.habits)if(logs[h.id])sum+=Number(h.xp||10);if(count>=1)sum+=10;if(count>=3)sum+=25;if(state.habits.length>0&&count===state.habits.length)sum+=40}return sum}
+function completionCount(day=today()){return state.habits.filter(h=>completed(h,day)).length}
+function streak(h){let n=0,d=today();if(!completed(h,d))d=shiftDate(d,-1);while(completed(h,d)&&n<3650){n++;d=shiftDate(d,-1)}return n}
+function bestStreak(){return Math.max(0,...state.habits.map(streak))}
+function xpForDay(day){return state.habits.reduce((n,h)=>n+(state.logs[day]?.[h.id]?Number(h.xp||10):0),0)}
+function levelInfo(){const xp=totalXP(),level=Math.floor(xp/100)+1,into=xp%100;return {xp,level,into,remaining:100-into}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.remove('hidden');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.add('hidden'),2300)}
+function render(){
+ const d=new Date();document.getElementById('dateLine').textContent=d.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'})+' · Every check-in counts.';
+ const count=completionCount(),total=state.habits.length,li=levelInfo();
+ document.getElementById('greeting').textContent=count===total&&total?'Quest complete. Nice work.':count?'Keep the momentum.':'Show up. Level up.';
+ document.getElementById('level').textContent=li.level;document.getElementById('xpFill').style.width=li.into+'%';document.getElementById('xpLabel').textContent=li.xp+' total XP';document.getElementById('nextLevel').textContent=li.remaining+' XP to next level';
+ document.getElementById('bestStreak').textContent=bestStreak();document.getElementById('todayCount').textContent=count+'/'+total;document.getElementById('totalXP').textContent=li.xp;document.getElementById('habitSub').textContent=total?count+' done · '+(total-count)+' remaining':'Add a habit to begin your run.';
+ const list=document.getElementById('habitList');
+ list.innerHTML=state.habits.length?state.habits.map(h=>{const done=completed(h);return `<div class="habit ${done?'done':''}"><div class="habit-emoji">${esc(h.emoji||'✨')}</div><div class="habit-main"><div class="habit-name">${esc(h.name)}</div><div class="habit-meta">🔥 ${streak(h)} day streak · +${Number(h.xp||10)} XP</div></div><button class="check" data-toggle="${esc(h.id)}" aria-label="${done?'Undo':'Complete'} ${esc(h.name)}">${done?'✓':''}</button><button class="mini-delete" data-delete="${esc(h.id)}" aria-label="Delete ${esc(h.name)}">×</button></div>`}).join(''):'<div class="empty">Your quest log is empty. Add one small habit to get started.</div>';
+ renderQuest();renderHeatmap();renderStats();renderWeekly();renderRewards();renderLeaderboard();
+}
+function renderQuest(){
+ const c=completionCount(),target=Math.min(3,state.habits.length),done=target>0&&c>=target;
+ const html=`<div class="quest-row"><div class="quest-icon">${done?'🏆':'🎯'}</div><div class="quest-info"><strong>${done?'Daily quest complete!':'Complete '+target+' habit'+(target===1?'':'s')}</strong><small>${target===0?'Add a habit to unlock quests.':done?'You earned the daily bonus.':c+' of '+target+' completed today.'}</small></div><span class="reward">${done?'+25 XP':'+'+25+' XP'}</span></div><div class="xpbar"><div style="width:${target?Math.min(100,c/target*100):0}%;background:linear-gradient(90deg,#fbbf24,#fb923c)"></div></div>`;
+ document.getElementById('dailyQuest').innerHTML=html;
+ const quests=[{name:'Warm-up',desc:'Complete your first habit today.',reward:10,done:c>=1,icon:'🌤️'},{name:'Triple threat',desc:'Complete 3 habits today.',reward:25,done:c>=3,icon:'🎯'},{name:'Full clear',desc:'Complete every active habit today.',reward:40,done:state.habits.length>0&&c===state.habits.length,icon:'👑'}];
+ document.getElementById('questList').innerHTML=quests.map(q=>`<div class="habit ${q.done?'done':''}"><div class="habit-emoji">${q.icon}</div><div class="habit-main"><div class="habit-name">${q.name}</div><div class="habit-meta">${q.desc}</div></div><span class="reward">${q.done?'✓ Claimed':'+'+q.reward+' XP'}</span></div>`).join('');
+}
+function renderHeatmap(){
+ const el=document.getElementById('heatmap'),days=[];for(let i=90;i>=0;i--)days.push(shiftDate(today(),-i));
+ el.innerHTML=days.map(day=>{const done=completionCount(day),n=state.habits.length?Math.min(4,Math.ceil(done/state.habits.length*4)):0;return `<div class="heat" data-n="${n}" title="${day}: ${done} completed"></div>`}).join('');
+ let sum=0;for(const d of days)sum+=state.habits.length?completionCount(d)/state.habits.length:0;
+ document.getElementById('heatPercent').textContent=Math.round(sum/days.length*100)+'% avg';
+}
+function renderStats(){
+ let completions=0,possible=0;for(let i=0;i<30;i++){const day=shiftDate(today(),-i);completions+=completionCount(day);possible+=state.habits.length}
+ document.getElementById('completedAll').textContent=Object.values(state.logs).reduce((n,logs)=>n+Object.values(logs).filter(Boolean).length,0);
+ document.getElementById('rateAll').textContent=(possible?Math.round(completions/possible*100):0)+'%';document.getElementById('habitTotal').textContent=state.habits.length;
+}
+function renderWeekly(){
+ const el=document.getElementById('weeklyChart'),items=[];for(let i=6;i>=0;i--){const day=shiftDate(today(),-i),c=completionCount(day),rate=state.habits.length?c/state.habits.length*100:0;items.push({day,c,rate,label:new Date(day+'T12:00:00').toLocaleDateString(undefined,{weekday:'short'})})}
+ el.innerHTML=items.map(x=>`<div class="bar-col"><div class="bar-value">${Math.round(x.rate)}%</div><div class="bar" style="height:${Math.max(3,x.rate)}%"></div><div class="bar-label">${x.label}</div></div>`).join('');
+ const avg=Math.round(items.reduce((n,x)=>n+x.rate,0)/7);document.getElementById('weeklySummary').textContent='Average completion over the last 7 days: '+avg+'%.';
+}
+function renderRewards(){
+ const total=totalXP(),all=Object.values(state.logs).reduce((n,l)=>n+Object.values(l).filter(Boolean).length,0);
+ const rs=[{name:'First spark',desc:'Complete a habit once.',icon:'✨',ok:all>=1},{name:'Five check-ins',desc:'Reach 5 total habit completions.',icon:'🖐️',ok:all>=5},{name:'Ten check-ins',desc:'Reach 10 total habit completions.',icon:'🔟',ok:all>=10},{name:'Level 5',desc:'Reach level 5.',icon:'🌌',ok:Math.floor(total/100)+1>=5},{name:'Seven-day streak',desc:'Keep a habit going for 7 days.',icon:'🔥',ok:state.habits.some(h=>streak(h)>=7)}];
+ document.getElementById('rewardsList').innerHTML=rs.map(r=>`<div class="habit ${r.ok?'done':''}"><div class="habit-emoji">${r.icon}</div><div class="habit-main"><div class="habit-name">${r.name}</div><div class="habit-meta">${r.desc}</div></div><span class="reward">${r.ok?'UNLOCKED':'LOCKED'}</span></div>`).join('');
+}
+function renderLeaderboard(){
+ const rows=[{name:state.profile||'You',score:totalXP(),you:true},...state.friends.map(f=>({name:f.name,score:Number(f.score)||0}))].sort((a,b)=>b.score-a.score);
+ document.getElementById('leaderboard').innerHTML=rows.map((r,i)=>`<div class="leader-row"><div class="rank">${i===0?'♛':String(i+1).padStart(2,'0')}</div><div class="avatar">${r.you?'⚡':'♟'}</div><div class="leader-name">${esc(r.name)}${r.you?' <span class="sub">(you)</span>':''}</div><div class="leader-score">${r.score} XP</div>${!r.you?`<button class="mini-delete" data-friend-delete="${esc(r.name)}" aria-label="Remove ${esc(r.name)}">×</button>`:''}</div>`).join('');
+}
+function openModal(title,body,submitText,handler){
+ const root=document.getElementById('modalRoot');root.innerHTML=`<div class="modal-backdrop" id="backdrop"><div class="modal"><h3>${title}</h3>${body}<div class="modal-actions"><button class="btn" id="cancelModal">Cancel</button><button class="btn primary" id="submitModal">${submitText}</button></div></div></div>`;
+ document.getElementById('cancelModal').onclick=()=>root.innerHTML='';document.getElementById('backdrop').onclick=e=>{if(e.target.id==='backdrop')root.innerHTML=''};document.getElementById('submitModal').onclick=()=>{if(handler()!==false)root.innerHTML=''};
+}
+function addHabitModal(){openModal('Create a habit',`<div class="form-grid"><input class="field full" id="habitName" maxlength="50" placeholder="Habit name (e.g. Read 10 pages)"><input class="field" id="habitEmoji" maxlength="4" value="✨" aria-label="Emoji"><select class="field" id="habitXP"><option value="5">5 XP</option><option value="10">10 XP</option><option value="15" selected>15 XP</option><option value="20">20 XP</option></select><div class="notice full">Choose a small action you can realistically repeat. XP is a game reward, not a measure of your worth.</div></div>`,'Create',()=>{const name=document.getElementById('habitName').value.trim();if(!name){toast('Give your habit a name first.');return false}state.habits.push({id:'h'+Date.now(),name,emoji:document.getElementById('habitEmoji').value.trim()||'✨',xp:Number(document.getElementById('habitXP').value),created:today()});save();render();toast('Habit added. Your next quest awaits.');});setTimeout(()=>document.getElementById('habitName')?.focus(),50)}
+function addFriendModal(){openModal('Add a leaderboard entry',`<div class="form-grid"><input class="field full" id="friendName" maxlength="30" placeholder="Name or nickname"><input class="field full" id="friendScore" type="number" min="0" max="9999999" value="0" placeholder="XP score"><div class="notice full">This is a manual, local score only. No data is sent to anyone.</div></div>`,'Add',()=>{const name=document.getElementById('friendName').value.trim(),score=Number(document.getElementById('friendScore').value);if(!name){toast('Enter a name first.');return false}state.friends.push({name,score:Math.max(0,score||0)});save();renderLeaderboard();toast('Leaderboard entry added.');})}
+document.getElementById('addHabitBtn').onclick=addHabitModal;document.getElementById('addFriendBtn').onclick=addFriendModal;
+document.getElementById('habitList').addEventListener('click',e=>{const t=e.target.closest('[data-toggle]'),d=e.target.closest('[data-delete]');if(t){const id=t.dataset.toggle,log=logFor();if(log[id])delete log[id];else log[id]=true;save();render();toast(log[id]?'Habit completed!':'Check-in undone.');}if(d){const h=state.habits.find(x=>x.id===d.dataset.delete);if(h&&confirm('Delete "'+h.name+'"? Past logs for this habit will remain in your local history.')){state.habits=state.habits.filter(x=>x.id!==h.id);save();render();toast('Habit removed.')}}});
+document.getElementById('leaderboard').addEventListener('click',e=>{const b=e.target.closest('[data-friend-delete]');if(b){state.friends=state.friends.filter(f=>f.name!==b.dataset.friendDelete);save();renderLeaderboard()}});
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));['today','progress','quests','friends'].forEach(v=>document.getElementById('view-'+v).classList.toggle('hidden',v!==b.dataset.tab));if(b.dataset.tab==='progress'){renderHeatmap();renderStats();renderWeekly()}});
+document.getElementById('settingsBtn').onclick=()=>openModal('Settings',`<label class="sub" for="profileName">Your display name</label><input class="field" id="profileName" maxlength="30" value="${esc(state.profile||'You')}" placeholder="You"><p class="notice">Reminder time (works while this app page is open):</p><div class="form-row"><input class="field" id="reminderTime" type="time" value="${esc(state.reminderTime||'19:00')}"><label class="pill"><input id="remindersOn" type="checkbox" ${state.remindersOn?'checked':''}> Enable</label></div><p class="notice">The browser checks the time while the page is open. This simple version cannot guarantee reminders when the app is closed.</p><button class="btn" id="reminderPermission" type="button">Enable notification permission</button><p class="notice">Export your data regularly if it matters to you. Browser storage can be cleared by Android or browser settings.</p><button class="btn" id="exportData" type="button">Export backup JSON</button> <button class="btn" id="importData" type="button">Import backup JSON</button><input id="importFile" class="hidden" type="file" accept=".json,application/json">`,'Save',()=>{state.profile=document.getElementById('profileName').value.trim()||'You';state.reminderTime=document.getElementById('reminderTime').value||'19:00';state.remindersOn=document.getElementById('remindersOn').checked;save();renderLeaderboard();toast('Settings saved.');});
+setTimeout(()=>{const p=document.getElementById('reminderPermission');if(p)p.onclick=async()=>{if(!('Notification'in window)){toast('Notifications are not supported in this browser.');return}const res=await Notification.requestPermission();toast(res==='granted'?'Notification permission enabled.':'Permission not enabled.');};const ex=document.getElementById('exportData');if(ex)ex.onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='greywater-backup.json';a.click();URL.revokeObjectURL(url);};const im=document.getElementById('importData'),file=document.getElementById('importFile');if(im&&file){im.onclick=()=>file.click();file.onchange=async()=>{try{const data=JSON.parse(await file.files[0].text());if(!data.habits||!data.logs)throw Error();if(confirm('Replace current data with this backup?')){state=data;save();render();document.getElementById('modalRoot').innerHTML='';toast('Backup imported.')}}catch(e){toast('That backup file could not be read.')}}}},60);
+};
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+let lastReminderKey='';function checkReminder(){if(!state.remindersOn||!state.reminderTime)return;const now=new Date(),hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0'),key=localDate(now)+' '+state.reminderTime;if(hh+':'+mm===state.reminderTime&&lastReminderKey!==key){lastReminderKey=key;toast('Habit check-in time. One small win?');if('Notification'in window&&Notification.permission==='granted'){try{new Notification('GreyWater',{body:'Your habit check-in is ready. One small win?'});}catch(e){}}}}setInterval(checkReminder,30000);
+render();
+</script>
+</body>
+</html>
